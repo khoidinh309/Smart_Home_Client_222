@@ -1,0 +1,123 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.content {
+    position: relative;
+    top: 5%;
+    width: 100%;
+    display: flex;
+    height: 95%;
+}
+
+.control-side {
+    width: 70%;
+}
+
+.info-side {
+    width: 30%;
+}
+
+.control-content {
+    margin: 0 20px;
+    padding: 10px 0;
+}
+
+.header {
+    width: 100%;
+    height: 100%;
+    padding: 20px 10px;
+    background-image: url(../../assets/images/wether-background.png);
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 0px 25px 64px rgba(20, 20, 43, 0.16);
+    background-position: right center;
+}
+
+.hello-section,
+.status-weather-section {
+    margin-left: 10px;
+}
+
+.weather-data {
+    padding: 10px 3px;
+}
+
+.temp-data {
+    display: flex;
+    align-items: center;
+
+    h4 {
+        margin-right: 10px;
+    }
+}
+
+.humi-data {
+    display: flex;
+    align-items: center;
+
+    h4 {
+        margin-right: 14px;
+    }
+}
+
+.weather-status {
+    display: flex;
+    align-items: center;
+}
+
+.temp-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 7px;
+}
+
+.humi-icon {
+    margin-left: 7px;
+    margin-right: 13px;
+}
+
+.cloud-icon {
+    margin: 0 5px;
+}
+
+.control-section {
+    margin-top: 30px;
+}
+
+.control-header {
+    margin-bottom: 10px;
+    margin-left: 13px;
+}
+
+.control-list {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-section {
+    padding: 0 25%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-temp-data,
+.room-humi-data {
+    border: solid 1px #979797;
+    border-radius: 10px;
+    width: 40%;
+    justify-content: center;
+    text-align: center;
+    padding: 15px 15px;
+}
+
+.room-temp-header,
+.room-humi-header {
+    display: flex;
+    justify-content: space-between;
+}

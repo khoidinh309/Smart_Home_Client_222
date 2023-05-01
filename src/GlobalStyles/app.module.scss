@@ -1,0 +1,70 @@
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+
+    .sidebar {
+        background-color: #ccc;
+        width: 200px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        padding: 1rem;
+
+        nav {
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin-bottom: 1rem;
+
+                    a {
+                        display: block;
+                        color: #333;
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                    }
+
+                    a.active {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        margin-left: 200px;
+        flex-grow: 1;
+    }
+}
