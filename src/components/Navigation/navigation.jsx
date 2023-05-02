@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     return (
         <div>
             <ul>
                 <li>
-                    <a href="#">Home</a>
+                    <Link to={'/'}>Home</Link>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <Link to={'/control'}>Điều khiển</Link>
                 </li>
             </ul>
         </div>

@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client';
-import { Home, Navigation } from './components';
+import { Home, Navigation, ControlDevice } from './components';
 import classNames from 'classnames/bind';
 import styles from './GlobalStyles/app.module.scss';
 
 const cx = classNames.bind(styles);
-//const socket = io('https://127.0.0.1:3001');
-
-const socket = null;
 
 const routes = [
     { path: '/', component: Home, exact: true },
-    //{ path: '/about', component: About },
+    { path: '/control', component: ControlDevice },
 ];
 
 function App() {
+    const [ledStatus, setLedStatus] = useState(false);
+    const [fanStatus, setFanStatus] = useState(false);
+    const [lockStatus, setLockStatus] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <BrowserRouter>
             <div className={cx('app-container')}>
@@ -25,12 +27,7 @@ function App() {
                 <div className={cx('content')}>
                     <Routes>
                         {routes.map((route, index) => (
-                            <Route
-                                key={index}
-                                path={route.path}
-                                exact={route.exact}
-                                element={<route.component socket={socket} />}
-                            />
+                            <Route key={index} path={route.path} exact={route.exact} element={<route.component />} />
                         ))}
                     </Routes>
                 </div>

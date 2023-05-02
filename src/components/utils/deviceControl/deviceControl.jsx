@@ -4,22 +4,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ToggleButton from '../toggleButton/toggleButton';
 import styles from './deviceControl.module.scss';
 import { faFan, faLightbulb, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useFeedContext, actions } from '../../../feedProvider';
 
 const cx = classNames.bind(styles);
 
-function Device({ label, value, onChange, iconCode, deviceName }) {
+function Device({ label, deviceName }) {
     const [status, setStatus] = useState(false);
+    const [state, dispatch] = useFeedContext();
 
     useEffect(() => {
-        setStatus(value);
-    }, [value]);
+        if (label === 'led') {
+            setStatus(state.ledStatus);
+        } else if (label === 'fan') {
+            setStatus(state.fanStatus);
+        } else {
+            setStatus(state.lockStatus);
+        }
+    }, [state]);
 
     return (
         <div className={cx('container')}>
             <div className={cx('header')}>
                 <h5>{status ? 'Bật' : 'Tắt'}</h5>
                 <div className={cx('toggle-btn')}>
-                    <ToggleButton label={label} value={value} onChange={onChange} />
+                    <ToggleButton
+                        label={label}
+                        value={status}
+                        action={
+                            label === 'led'
+                                ? actions.setLedStatus
+                                : label === 'fan'
+                                ? actions.setFanStatus
+                                : actions.setLockStatus
+                        }
+                    />
                 </div>
             </div>
             <div className={cx('device-icon')}>
