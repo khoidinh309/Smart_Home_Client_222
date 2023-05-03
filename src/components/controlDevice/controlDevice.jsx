@@ -38,6 +38,9 @@ function ControlDevice() {
 
     const handleStartTimeChange = (value) => {
         if (isValidTime(value)) {
+            if (state.scheduleStatus === true) {
+                socket.emit('set-turn-on-time', value);
+            }
             localStorage.setItem('startTime', JSON.stringify(value));
         }
         setStartTime(value);
@@ -45,6 +48,9 @@ function ControlDevice() {
 
     const handleEndTimeChange = (value) => {
         if (isValidTime(value)) {
+            if (state.scheduleStatus) {
+                socket.emit('set-turn-off-time', value);
+            }
             localStorage.setItem('endTime', JSON.stringify(value));
         }
         setEndTime(value);
@@ -153,7 +159,7 @@ function ControlDevice() {
                             <input
                                 type="checkbox"
                                 checked={state.fanStatus === 100}
-                                onClick={() => handleSpeedClick(100)}
+                                onChange={() => handleSpeedClick(100)}
                             />
                         </div>
                         <div className={cx('half-speed')}>
@@ -161,7 +167,7 @@ function ControlDevice() {
                             <input
                                 type="checkbox"
                                 checked={state.fanStatus === 50}
-                                onClick={() => handleSpeedClick(50)}
+                                onChange={() => handleSpeedClick(50)}
                             />
                         </div>
                     </div>

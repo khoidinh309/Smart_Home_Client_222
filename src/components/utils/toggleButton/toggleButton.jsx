@@ -29,6 +29,10 @@ function ToggleButton({ label, value, action }) {
                 feed: label,
                 value: value,
             });
+        } else {
+            if (newValue === false) {
+                socket.emit('turn-off-time-interval', false);
+            }
         }
         dispatch(action(label === 'lock' || label === 'schedule' ? newValue : value));
     };
