@@ -24,9 +24,9 @@ function Home() {
         socket.on('init-data', (data) => {
             for (let i = 0; i < data.length; i++) {
                 if (data[i].feed === 'led') {
-                    dispatch(actions.setLedStatus(parseInt(data[i].data) !== 0));
+                    dispatch(actions.setLedStatus(parseInt(data[i].data)));
                 } else if (data[i].feed === 'fan') {
-                    dispatch(actions.setFanStatus(parseInt(data[i].data) !== 0));
+                    dispatch(actions.setFanStatus(parseInt(data[i].data)));
                 } else if (data[i].feed === 'lock') {
                     dispatch(actions.setLockStatus(parseInt(data[i].data) !== 0));
                 } else if (data[i].feed === 'temp') {
@@ -39,9 +39,9 @@ function Home() {
 
         socket.on('change-data', (data) => {
             if (data.feed === 'led') {
-                dispatch(actions.setLedStatus(parseInt(data.value) !== 0));
+                dispatch(actions.setLedStatus(parseInt(data.value)));
             } else if (data.feed === 'fan') {
-                dispatch(actions.setFanStatus(parseInt(data.value) !== 0));
+                dispatch(actions.setFanStatus(parseInt(data.value)));
             } else if (data.feed === 'lock') {
                 dispatch(actions.setLockStatus(parseInt(data.value) !== 0));
             } else if (data.feed === 'temp') {

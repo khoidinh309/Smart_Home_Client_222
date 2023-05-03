@@ -11,21 +11,26 @@ function ToggleButton({ label, value, action }) {
 
     useEffect(() => {
         if (label === 'led') {
-            setIsOn(state.ledStatus);
+            setIsOn(state.ledStatus !== 0);
         } else if (label === 'fan') {
-            setIsOn(state.fanStatus);
-        } else {
+            setIsOn(state.fanStatus !== 0);
+        } else if (label === 'lock') {
             setIsOn(state.lockStatus);
+        } else {
+            setIsOn(state.scheduleStatus);
         }
     }, [state]);
 
     const handleClick = () => {
         const newValue = !isOn;
-        socket.emit('toggle-message', {
-            feed: label,
-            value: newValue === true ? 1 : 0,
-        });
-        dispatch(action(newValue));
+        const value = newValue !== true ? 0 : label === 'fan' ? 100 : 1;
+        if (label !== 'schedule') {
+            socket.emit('toggle-message', {
+                feed: label,
+                value: value,
+            });
+        }
+        dispatch(action(label === 'lock' || label === 'schedule' ? newValue : value));
     };
 
     return (

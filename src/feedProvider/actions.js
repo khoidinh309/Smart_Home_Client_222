@@ -29,3 +29,8 @@ export const setHumiValue = (payload) => ({
     type: constants.SET_HUMI,
     payload,
 });
+
+export const setScheduleStatus = (payload) => ({
+    type: constants.SET_SCHEDULE,
+    payload,
+});

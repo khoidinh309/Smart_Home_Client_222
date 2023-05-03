@@ -14,9 +14,9 @@ function Device({ label, deviceName }) {
 
     useEffect(() => {
         if (label === 'led') {
-            setStatus(state.ledStatus);
+            setStatus(state.ledStatus !== 0);
         } else if (label === 'fan') {
-            setStatus(state.fanStatus);
+            setStatus(state.fanStatus !== 0);
         } else {
             setStatus(state.lockStatus);
         }

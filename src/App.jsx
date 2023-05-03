@@ -13,11 +13,6 @@ const routes = [
 ];
 
 function App() {
-    const [ledStatus, setLedStatus] = useState(false);
-    const [fanStatus, setFanStatus] = useState(false);
-    const [lockStatus, setLockStatus] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-
     return (
         <BrowserRouter>
             <div className={cx('app-container')}>
