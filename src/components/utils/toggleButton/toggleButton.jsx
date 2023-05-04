@@ -32,6 +32,15 @@ function ToggleButton({ label, value, action }) {
         } else {
             if (newValue === false) {
                 socket.emit('turn-off-time-interval', false);
+            } else {
+                const turnOnTime = localStorage.getItem('startTime')
+                    ? JSON.parse(localStorage.getItem('startTime'))
+                    : '18:00';
+                const turnOffTime = localStorage.getItem('endTime')
+                    ? JSON.parse(localStorage.getItem('endTime'))
+                    : '06:00';
+                socket.emit('set-turn-on-time', turnOnTime);
+                socket.emit('set-turn-off-time', turnOffTime);
             }
         }
         dispatch(action(label === 'lock' || label === 'schedule' ? newValue : value));

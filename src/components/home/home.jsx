@@ -144,9 +144,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className={cx('info-side')}>
-                    <MessageModal show={state.showModal} onHide={() => dispatch(actions.setShowModal(false))} />
-                </div>
+                <div className={cx('info-side')}></div>
             </div>
         </div>
     );

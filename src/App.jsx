@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import io from 'socket.io-client';
 import { Home, Navigation, ControlDevice } from './components';
 import classNames from 'classnames/bind';
+import MessageModal from './components/utils/messageModal/messageModal';
 import styles from './GlobalStyles/app.module.scss';
+import { useFeedContext, actions } from './feedProvider';
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +15,7 @@ const routes = [
 ];
 
 function App() {
+    const [state, dispatch, socket] = useFeedContext();
     return (
         <BrowserRouter>
             <div className={cx('app-container')}>
@@ -27,6 +30,7 @@ function App() {
                     </Routes>
                 </div>
             </div>
+            <MessageModal show={state.showModal} onHide={() => dispatch(actions.setShowModal(false))} />
         </BrowserRouter>
     );
 }
